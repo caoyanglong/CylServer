@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义半圆形加载进度条-->
+    <declare-styleable name="HalfProgressBar">
+        <attr name="roundColor1" format="color"/>
+        <attr name="roundProgressColor1" format="color"/>
+        <attr name="circularDotColor1" format="color"/>
+        <attr name="circularProgress" format="integer"/>
+        <attr name="pointRadius" format="dimension"/>
+        <attr name="ponitStep" format="integer"/>
+        <attr name="circularDotGrey" format="color"/>
+    </declare-styleable>
+</resources>

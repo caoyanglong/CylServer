@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android_custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.cyl.cylserver.widget.HalfProgressBar
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android_custom:roundColor1="#fc4fff"
+        android_custom:roundProgressColor1="#ffffff"
+        android_custom:circularDotColor1="#FFF000"
+        android_custom:pointRadius="7dp"
+        android_custom:ponitStep="4"
+        android_custom:circularProgress="80"
+        android_custom:circularDotGrey="#FF0000"
+        />
+</LinearLayout>
