@@ -12,7 +12,8 @@ import android.view.View;
 import com.cyl.cylserver.R;
 
 /**
- * 自定义带圆点的进度条
+ * 提供方法可以 画 在圆上  或者 各种估画 各种图像
+ * 目前的实现的是在圆上 画 小圆点
  */
 public class HalfProgressBar extends View {
     private int maxProgress = 100;
@@ -96,14 +97,14 @@ public class HalfProgressBar extends View {
         roundColor = mTypedArray.getColor(R.styleable.HalfProgressBar_roundColor1, Color.YELLOW);
         circularDotColor = mTypedArray.getColor(R.styleable.HalfProgressBar_circularDotColor1, Color.YELLOW);
         progress = mTypedArray.getInt(R.styleable.HalfProgressBar_circularProgress, progress);
-        pointRadius = mTypedArray.getDimension(R.styleable.HalfProgressBar_pointRadius,pointRadius);
-        ponitStep = mTypedArray.getInteger(R.styleable.HalfProgressBar_ponitStep,ponitStep);
-        circularDotGrey = mTypedArray.getColor(R.styleable.HalfProgressBar_circularDotGrey,circularDotGrey);
+        pointRadius = mTypedArray.getDimension(R.styleable.HalfProgressBar_pointRadius, pointRadius);
+        ponitStep = mTypedArray.getInteger(R.styleable.HalfProgressBar_ponitStep, ponitStep);
+        circularDotGrey = mTypedArray.getColor(R.styleable.HalfProgressBar_circularDotGrey, circularDotGrey);
     }
 
     public HalfProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context,attrs);
+        init(context, attrs);
 
     }
 
@@ -123,12 +124,11 @@ public class HalfProgressBar extends View {
         oval.bottom = progressWidth - circularDotWidth / 2; // 右下角y
 
 
-
         //调整圆背景的大小
         canvas.drawArc(oval, 0, 360, false, paint); // 绘制红丝圆圈，即进度条背景
-        oval = new RectF(0,0,oval.right+10
-                ,oval.bottom+10);
-        canvas.drawRect(oval,paint);
+        oval = new RectF(0, 0, oval.right + 10
+                , oval.bottom + 10);
+        canvas.drawRect(oval, paint);
         float bangjing = ((progressWidth - circularDotWidth / 2) / 2);//半径
 //        oval = new RectF(oval.left-10,oval.top-10,oval.right-10,oval.bottom-10);
         //进度条颜色
@@ -145,16 +145,14 @@ public class HalfProgressBar extends View {
         //当画笔样式为STROKE或FILL_OR_STROKE时，设置笔刷的图形样式，如圆形样式Cap.ROUND,或方形样式Cap.SQUARE
         paint.setStrokeCap(Paint.Cap.ROUND);
 
-        float circleX = (oval.right-oval.left)/2+oval.left;
-        float circleY = (oval.bottom - oval.top)/2+oval.top;
         for (int i = 0; i < 100; i = i + ponitStep) {
-            float jindu = ((float) i * 1.8f*2);
+            float jindu = ((float) i * 1.8f * 2);
             float x = bangjing - ((float) (Math.sin((Math.PI / (double) 180) * (jindu <= 90 ? 90 - (jindu) : -jindu + 90))) * bangjing);
             float y = bangjing + circularDotWidth - ((float) (Math.cos((Math.PI / (double) 180) * (double) (jindu <= 90 ? 90 - jindu : -jindu + 90))) * bangjing);
-            if(i <= progress){
-                canvas.drawCircle(x+2, y, pointRadius, paint);
-            }
-            else{
+//
+            if (i <= progress) {
+                canvas.drawCircle(x + 2, y, pointRadius, paint);
+            } else {
                 paint.setColor(circularDotGrey);
                 canvas.drawCircle(x, y, pointRadius, paint);
             }

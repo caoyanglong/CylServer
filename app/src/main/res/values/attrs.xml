@@ -10,4 +10,15 @@
         <attr name="ponitStep" format="integer"/>
         <attr name="circularDotGrey" format="color"/>
     </declare-styleable>
+
+
+    <!--自定义半圆形加载进度条-->
+    <declare-styleable name="CirclePointProgressBar">
+        <attr name="smallpointRadius" format="dimension"/>
+        <attr name="pointSelectedColor" format="color"/>
+        <attr name="pointUnSelectedColor" format="color"/>
+        <attr name="circleProgress" format="integer"/>
+        <attr name="circlePointStep" format="integer"/>
+        <attr name="circleBarRadius" format="dimension"/>
+    </declare-styleable>
 </resources>
